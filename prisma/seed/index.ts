@@ -2,13 +2,13 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-import Authors from './data/authors';
-import Books from './data/books';
-import Stores from './data/Stores';
+import { authors } from './data/authors';
+import { books } from './data/books';
+import { stores } from './data/stores';
 
 async function runSeeders() {
   await Promise.all(
-    Authors.map(async (author) =>
+    authors.map(async (author) =>
       prisma.author.upsert({
         where: { id: author.id },
         update: {},
@@ -18,7 +18,7 @@ async function runSeeders() {
   );
 
   await Promise.all(
-    Books.map(async (book) =>
+    books.map(async (book) =>
       prisma.book.upsert({
         where: { id: book.id },
         update: {},
@@ -28,7 +28,7 @@ async function runSeeders() {
   );
 
   await Promise.all(
-    Stores.map(async (store) =>
+    stores.map(async (store) =>
       prisma.store.upsert({
         where: { id: store.id },
         update: {},
