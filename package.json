@@ -18,6 +18,9 @@
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed/index.ts"
+  },
   "devDependencies": {
     "@sveltejs/adapter-node": "^1.0.0-next.98",
     "@sveltejs/kit": "^1.0.0-next.516",
