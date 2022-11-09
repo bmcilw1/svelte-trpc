@@ -5,6 +5,7 @@ const prisma = new PrismaClient();
 import { authors } from './data/authors.js';
 import { books } from './data/books.js';
 import { stores } from './data/stores.js';
+import { bookToStore } from './data/bookToStores.js';
 
 async function runSeeders() {
   console.log('Seeding database...');
@@ -35,6 +36,21 @@ async function runSeeders() {
         where: { id: store.id },
         update: {},
         create: store
+      })
+    )
+  );
+
+  await Promise.all(
+    bookToStore.map(async (b2s) =>
+      prisma.book.update({
+        where: { id: b2s[0] },
+        data: {
+          stores: {
+            connect: {
+              id: b2s[1]
+            }
+          }
+        }
       })
     )
   );
