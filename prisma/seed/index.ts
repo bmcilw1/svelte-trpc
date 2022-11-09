@@ -7,6 +7,8 @@ import { books } from './data/books.js';
 import { stores } from './data/stores.js';
 
 async function runSeeders() {
+  console.log('Seeding database...');
+
   await Promise.all(
     authors.map(async (author) =>
       prisma.author.upsert({
