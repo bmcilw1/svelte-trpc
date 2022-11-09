@@ -2,9 +2,9 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-import { authors } from './data/authors';
-import { books } from './data/books';
-import { stores } from './data/stores';
+import { authors } from './data/authors.js';
+import { books } from './data/books.js';
+import { stores } from './data/stores.js';
 
 async function runSeeders() {
   await Promise.all(
